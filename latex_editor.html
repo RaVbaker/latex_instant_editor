@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Instant LaTeX editor</title>
+    <meta charset="utf-8" />
+    <style type="text/css" media="screen">
+      h1 {
+         text-align:center;
+      }         
+      
+      textarea {
+        width: 100% !important;
+      }     
+      
+      body {
+        margin: 5px;
+        padding: 0;
+        font-family: "Lucida Grande", verdana, arial, helvetica, sans-serif;
+      }   
+      
+      #editor {
+        width: 100%; 
+        height: 100%;
+        overflow: hidden;
+      } 
+                               
+      #editor_input {
+        float:left;
+        width:45%;
+      }            
+      
+      #editor_output {
+        float:right;
+        width:45%;
+      }
+      
+      #help {
+        width: 100%;
+        height: 250px;    
+        border: 1px solid #999;
+      }
+      
+      
+      #formula {
+        font-size: 14px;
+        line-height: 22px; 
+        padding: 10px;
+      }  
+      
+      footer {
+        text-align:center;
+      }
+      /*mobile view*/
+      @media screen and (max-width: 680px) {
+        
+        #editor_input, #editor_output, #help {
+          float:none;
+          width: 95%;
+          min-width:100px;
+          max-width: 760px;
+        }                              
+        
+        #help {
+          width: 98%;
+        }
+        
+        textarea {
+          height: 120px;
+        }
+      }
+      
+    </style>
+  </head>
+  <body>
+    <section>                         
+      <h1>Instant LaTeX editor</h1>
+      <form action="#" method="get" accept-charset="utf-8">
+        <section id="editor">
+          <section id="editor_input">
+            <p><textarea name="formula" id="formula" rows="14" cols="80" placeholder="Type here your LaTeX code..."></textarea></p>                                                                  
+            <p id="helper">Need help? <a href="http://www.forkosh.com/mimetextutorial.html" onclick="var el = document.getElementById('helper');el.parentNode.removeChild(el);document.getElementById('help').style.display = 'block';return false;">Try here!</a></p>
+          </section>
+
+          <section id="editor_output">
+            <p><img src="http://www.texify.com/img/%5Cnormalsize%5C%21...%5C%20and%5C%20then%5C%20here%5C%20will%5C%20appear%5C%20your%5C%20equartions..gif" id="formula_view" /></p>
+          </section>       
+          <iframe src="http://www.forkosh.dreamhost.com/source_mimetextutorial.html" id="help" style="display:none;"></iframe>
+        </section>                                                                          
+      </form>
+
+      <footer>magic by <a href="http://ja.ravbaker.net">RaVbaker</a>. Greetings to <a href="http://www.texify.com/">TeXify</a> for image support!</footer>
+    </section>                                                                              
+    
+    <script type="text/javascript">//<![CDATA[
+    (function (){
+      var formula = document.getElementById('formula'),
+          view = document.getElementById('formula_view');
+          
+      showFormula = function() {                       
+        var formula_value = formula.value;
+        if (formula.value.match(/^\s*$/)) formula_value = '\\ ';
+        
+        formula_value = escape('\\LARGE '+formula_value.split("\n").join(' \\\\ '));
+        view.src = 'http://www.texify.com/img/'+formula_value+'.gif';
+      };      
+
+
+      var updateInterval = function() {
+        var last_value = '', 
+            current_value = formula.value;
+        if (current_value !== last_value) {
+          showFormula();
+        }               
+        last_value = current_value;
+      };
+
+      setInterval(updateInterval, 1200);
+    })();  
+    //]]>
+    </script>
+  </body>
+</html>
