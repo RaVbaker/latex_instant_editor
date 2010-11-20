@@ -82,7 +82,7 @@
           </section>
 
           <section id="editor_output">
-            <p><img src="http://ravbaker.net/latex_instant/mimetex.cgi?%5Cnormalsize%5C%21...%5C%20and%5C%20then%5C%20here%5C%20will%5C%20appear%5C%20your%5C%20equartions..gif" id="formula_view" /></p>
+            <p><img src="http://ravbaker.net/latex_instant/mimetex.cgi?%5Cnormalsize%5C%21...%5C%20and%5C%20then%5C%20here%5C%20will%5C%20appear%5C%20your%5C%20equartions." id="formula_view" /></p>
           </section>       
           <iframe src="./mimetex.html" id="help" style="display:none;"></iframe>
         </section>                                                                          
@@ -101,7 +101,7 @@
         if (formula.value.match(/^\s*$/)) formula_value = '\\ ';
         
         formula_value = escape('\\LARGE '+formula_value.split("\n").join(' \\\\ '));
-        view.src = 'http://ravbaker.net/latex_instant/mimetex.cgi?'+formula_value+'.gif';
+        view.src = 'http://ravbaker.net/latex_instant/mimetex.cgi?'+formula_value;
       };      
 
 
