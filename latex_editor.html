@@ -82,13 +82,13 @@
         <section id="editor">
           <section id="editor_input">
             <p><textarea name="formula" id="formula" rows="14" cols="80" placeholder="Type here your LaTeX code..."></textarea></p>                                                                  
-            <p id="helper">Need help? <a href="./mimetex.html" onclick="var el = document.getElementById('helper');el.parentNode.removeChild(el);document.getElementById('help').style.display = 'block';return false;">Try here!</a></p>
+            <p id="helper">Need help? <a href="./mimetex.html" onclick="var el = document.getElementById('helper'), help = document.getElementById('help'), path = this.href;el.parentNode.removeChild(el);help.src = path;help.style.display = 'block';return false;">Try here!</a></p>
           </section>
 
           <section id="editor_output">
             <p><img src="http://ravbaker.net/latexEditor/mimetex.cgi?%5Cnormalsize%5C%21...%5C%20and%5C%20then%5C%20here%5C%20will%5C%20appear%5C%20your%5C%20equartions." id="formula_view" /></p>
           </section>       
-          <iframe src="./mimetex.html" id="help" style="display:none;"></iframe>
+          <iframe src="about:blank" id="help" style="display:none;"></iframe>
         </section>                                                                          
       </form>
 
